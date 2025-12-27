@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signUp } from '@/lib/auth'
+import { logIn, signUp } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -15,6 +15,8 @@ export default function SignupPage() {
   async function handleSignup() {
     try {
       await signUp(email, password)
+      // Log in immediately after signup
+      await logIn(email, password)
       router.push('/dashboard')
     } catch (err) {
       setError((err as Error).message)

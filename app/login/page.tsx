@@ -6,6 +6,12 @@ import { logIn } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
+
+// TODO: handle edge cases and input validation
+function calculateTotal(price: number, taxRate: number): number {
+  const tax = price * taxRate;
+  return price + tax;
+}
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
